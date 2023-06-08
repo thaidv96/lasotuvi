@@ -56,7 +56,13 @@ class diaBan(object):
         self.nhapCungThan()
 
     def cungChu(self, thangSinhAmLich, gioSinhAmLich):
-        self.cungThan = dichCung(3, thangSinhAmLich - 1, gioSinhAmLich - 1)
+        # Bắt đầu từ cung số 3, tương ứng với Dần, tương ứng với tháng 1 trong năm
+        ## Tiến theo chiều tháng sinh
+        ## Giật lùi lại theo chiều ngày sinh
+        self.cungThan = dichCung(3, thangSinhAmLich - 1)
+        self.cungThan = dichCung(self.cungThan, 1-gioSinhAmLich)
+
+
         self.cungMenh = dichCung(3, thangSinhAmLich - 1, - (gioSinhAmLich) + 1)
         cungPhuMau = dichCung(self.cungMenh, 1)
         cungPhucDuc = dichCung(self.cungMenh, 2)
