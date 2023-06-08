@@ -6,8 +6,7 @@ from lasotuvi.AmDuong import (canChiNgay, diaChi, ngayThangNam, ngayThangNamCanC
                      nguHanh, nguHanhNapAm, thienCan, timCuc, sinhKhac)
 import time
 from lasotuvi.Lich_HND import jdFromDate
-from lunarcalendar import Converter, Solar, Lunar, DateNotExist
-
+from .lunar_to_solar import lunar_to_solar
 
 class lapThienBan(object):
     def __init__(self, nn, tt, nnnn, gioSinh, gioiTinh, ten, diaBan,
@@ -36,13 +35,8 @@ class lapThienBan(object):
         else:
             self.ngayAm, self.thangAm, self.namAm = self.ngayDuong,\
                 self.thangDuong, self.namDuong
-            lunar_date = Lunar(self.namAm, self.thangAm,self.ngayAm)
-            solar = Converter.Lunar2Solar(lunar_date).to_date()
-            self.ngayDuong = solar.day
-            self.thangDuong = solar.month
-            self.namDuong = solar.year
-
-
+            self.ngayDuong,self.thangDuong, self.namDuong= lunar_to_solar(self.ngayAm, self.thangAm, self.namAm, 0)
+            
 
         self.canThang, self.canNam, self.chiNam = \
             ngayThangNamCanChi(self.ngayAm, self.thangAm,
