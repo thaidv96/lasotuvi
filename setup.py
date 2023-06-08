@@ -11,6 +11,7 @@ setup(name='lasotuvi',
       setup_requires=['pytest-runner'],
       tests_require=['pytest'],
       install_requires=[
+          "LunarCalendar"
         #   "attrs==17.4.0",
         #   "ephem==3.7.6.0  ; sys_platform == 'linux'",
         #   "more-itertools==4.1.0",
