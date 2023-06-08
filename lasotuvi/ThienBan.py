@@ -36,7 +36,7 @@ class lapThienBan(object):
         else:
             self.ngayAm, self.thangAm, self.namAm = self.ngayDuong,\
                 self.thangDuong, self.namDuong
-            lunar_date = Lunar(self.ngayAm, self.thangAm, self.namAm)
+            lunar_date = Lunar(self.namAm, self.thangAm,self.ngayAm)
             solar = Converter.Lunar2Solar(lunar_date).to_date()
             self.ngayDuong = solar.day
             self.thangDuong = solar.month
